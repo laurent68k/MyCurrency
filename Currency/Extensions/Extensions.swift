@@ -309,4 +309,34 @@ extension Date {
         return outputDate
     }
 
+    /**
+     Format and return the self date only
+     
+     */
+    var asTimeLocalized : String {
+        
+        //  Format the ouput now with a specific formatter regarding the current localization
+        let dateOutputFormatter  = DateFormatter()
+        dateOutputFormatter.dateStyle = .none
+        dateOutputFormatter.timeStyle = .short
+        dateOutputFormatter.locale = Locale.autoupdatingCurrent
+        
+        let outputDate = dateOutputFormatter.string(from: self)
+        
+        return outputDate
+    }
+    
+    var asTimeUK : String {
+        
+        //  Format the ouput now with a specific formatter regarding the current localization
+        let dateOutputFormatter  = DateFormatter()
+        dateOutputFormatter.dateStyle = .none
+        dateOutputFormatter.timeStyle = .medium
+        dateOutputFormatter.timeZone = TimeZone(abbreviation: "BST")
+        
+        let outputDate = dateOutputFormatter.string(from: self)
+        
+        return outputDate
+    }
+
 }

@@ -16,15 +16,21 @@ class CurrencyViewController: AncestorViewController {
     @IBOutlet weak var movableView: UIView!
     @IBOutlet weak var amountUpField: UITextField!
     @IBOutlet weak var amountDownField: UITextField!
-
+    @IBOutlet weak var timeUKLabel: UILabel!
+    
     private var viewModel = CurrencyViewModel()
-
+    private static let kTimerPeriod = 1.0
+    private var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.amountUpField.delegate = self
         self.amountDownField.delegate = self
+        
+        self.amountUpField.keyboardType = UIKeyboardType.decimalPad
+        self.amountDownField.keyboardType = UIKeyboardType.decimalPad
         
         self.amountUpField.returnKeyType = UIReturnKeyType.default
         self.amountDownField.returnKeyType = UIReturnKeyType.default
@@ -33,8 +39,11 @@ class CurrencyViewController: AncestorViewController {
         
         self.addDoneButtonOnKeyboard(for: [self.amountUpField, self.amountDownField ])
         
-        AudioServicesPlaySystemSound (1104)
+        self.timer = Timer.scheduledTimer(timeInterval: CurrencyViewController.kTimerPeriod, target: self, selector:#selector(timerBody), userInfo: nil, repeats: true)
 
+        self.timeUKLabel.text = "UK: \(Date().asTimeUK)"
+        
+        AudioServicesPlaySystemSound (1104)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -70,6 +79,11 @@ class CurrencyViewController: AncestorViewController {
         } ).disposed(by: self.disposeBag)
     }
 
+    @objc private func timerBody() {
+        
+        self.timeUKLabel.text = "UK: \(Date().asTimeUK)"
+    }
+    
     //  MARK: - IBAction functions
     @IBAction func amountUpEditBegin(_ sender: UITextField) {
         
@@ -81,7 +95,7 @@ class CurrencyViewController: AncestorViewController {
     
     @IBAction func amountUpChanged(_ sender: UITextField) {
 
-        self.viewModel.amountUpInput.value = self.amountUpField.text ?? String.empty
+        self.viewModel.amountUpInput.value = self.amountUpField.text ?? String.empty        
     }
 
     @IBAction func amountUpEditEnd(_ sender: UITextField) {

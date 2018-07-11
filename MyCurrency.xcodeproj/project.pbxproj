@@ -15,7 +15,6 @@
 		4D7D761920F4F59E0038CFB1 /* AncestorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D761820F4F59E0038CFB1 /* AncestorViewController.swift */; };
 		4D7D761D20F4F6D50038CFB1 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D761C20F4F6D50038CFB1 /* CurrencyViewModel.swift */; };
 		4D7D762020F4F78B0038CFB1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D761F20F4F78B0038CFB1 /* Extensions.swift */; };
-		9218A6E15ABC3BFB87DC7DA1 /* Pods_Currency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AB35849057032F4EEF96DA /* Pods_Currency.framework */; };
 		DAB401844C0BB74F4223DE2E /* Pods_MyCurrency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA5DFAB2DB6030CF1D04F49 /* Pods_MyCurrency.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9218A6E15ABC3BFB87DC7DA1 /* Pods_Currency.framework in Frameworks */,
 				DAB401844C0BB74F4223DE2E /* Pods_MyCurrency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,11 +395,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2T32WF6U53;
 				INFOPLIST_FILE = Currency/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurent68k.ios.Currency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -413,11 +415,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2T32WF6U53;
 				INFOPLIST_FILE = Currency/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurent68k.ios.Currency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

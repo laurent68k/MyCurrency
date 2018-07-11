@@ -68,25 +68,24 @@ class CurrencyViewModel {
   
     private func convertAmontUpToDown(from value:String) {
         
-        self.amountUpOutput.value = value.fromNumberLocal ?? String.empty
+        self.amountUpOutput.value = value
         
-        if let amount = Double( value ) {
+        if let amount = value.fromNumberLocalToDouble {
             
             let amountDown = amount * 1.13
-            
-            print("value: \(amountDown)")
+
             self.amountDownOutput.value = amountDown.asPercentWithoutSymbol
         }
     }
 
     private func convertAmontDownToUp(from value:String) {
         
-        self.amountDownOutput.value = value.fromNumberLocal ?? String.empty
+        self.amountDownOutput.value = value
 
-        if let amount = Double( value ) {
+        if let amount = value.fromNumberLocalToDouble {
+            
             let amountUp = amount / 1.13
             
-            print("value: \(amountUp)")
             self.amountUpOutput.value = amountUp.asPercentWithoutSymbol
         }
     }

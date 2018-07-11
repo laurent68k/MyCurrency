@@ -23,21 +23,11 @@ class AncestorViewController: UIViewController, UITextFieldDelegate {
     
     private var movableKeyboardView : UIView?
     var observers = [NSObjectProtocol]()
-    
-    static let cancelImage = SystemSoundID(1112)
-    static let pasteImageSound = SystemSoundID(1111)
-    static let positiveAckSound = SystemSoundID(1054)
-    static let negativeAckSound = SystemSoundID(1053)
     /// ---------------------------------------------------------------------------------------------------------------------------------------------
     let disposeBag = DisposeBag()
     
     /// ---------------------------------------------------------------------------------------------------------------------------------------------
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-    }
-    
+       
     override func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()
@@ -231,24 +221,4 @@ class AncestorViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-}
-
-extension AncestorViewController: UIPopoverPresentationControllerDelegate {
-
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-
-        return .none
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if let popoverController = segue.destination.popoverPresentationController, let button = sender as? UIButton {
-
-            popoverController.delegate = self
-            popoverController.sourceView = button
-            popoverController.sourceRect = button.bounds
-        }
-
-        super.prepare(for: segue, sender: sender)
-    }
 }
